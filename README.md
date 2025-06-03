@@ -71,3 +71,35 @@ matrices_list       # Stores matrix of top 3 countries
 vector_list         # Stores vectors used (column names, country names)
 data_structure_list # Contains all above lists
 covid_analysis_list # Final list with question, answer, and data structures
+
+🛠 Technologies Used
+Language: R
+Libraries: dplyr, tibble, tidyverse
+Output Format: HTML (via R Markdown)
+
+📊 Sample Code Snippet
+r
+Copy
+Edit
+covid_df_all_states_daily_sum <- covid_df_all_states_daily %>%
+  group_by(Country_Region) %>%
+  summarize(
+    tested = sum(daily_tested), 
+    positive = sum(daily_positive),
+    active = sum(active),
+    hospitalized = sum(hospitalizedCurr)
+  ) %>%
+  arrange(desc(tested))
+
+top_posit_test <- sort(positive_cases / tested_cases, decreasing = TRUE)
+positive_tested_top_3 <- head(top_posit_test, 3)
+
+📈 Output Preview
+r
+Copy
+Edit
+positive_tested_top_3
+# United Kingdom     0.11
+# United States      0.10
+# Turkey             0.08
+
